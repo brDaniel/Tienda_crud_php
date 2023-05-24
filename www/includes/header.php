@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Happy Duck</title>
+  <title>Happy Duck's</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
 <header>
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
-        <a href="index.php" class="navbar-brand">HappyDuck</a>
+        <a href="index.php" class="navbar-brand">Happy Duck's</a>
       </div>
     </nav>
   </header>
