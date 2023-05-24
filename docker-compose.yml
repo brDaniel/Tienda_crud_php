@@ -1,0 +1,47 @@
+version: "3.1"
+
+services:
+  dbtienda:
+    image: mysql
+    container_name: dbtienda
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: Tienda
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d 
+      - ./conf:/etc/mysql/conf.db 
+      - persistent:/var/lib/mysql 
+    networks:
+      - default
+
+  www:
+    build: .
+    container_name: www
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html/ 
+    links:
+      - dbtienda
+    networks:
+      - default
+    
+  phpmyadmintienda:
+    image: phpmyadmin/phpmyadmin 
+    container_name: phpmyadmintienda
+    links:
+      - dbtienda:dbtienda
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+      PMA_HOST: dbtienda
+      PMA_PORT: 3306
+
+volumes:
+  persistent:
